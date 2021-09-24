@@ -3,6 +3,6 @@ public class Main {
         WordGenerator wordGenerator = new WordGenerator();
 
         // prints HELLO
-        wordGenerator.generatePossibleWords("043556");
+        wordGenerator.generatePossibleWords("43556");
     }
 }

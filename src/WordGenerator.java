@@ -27,38 +27,33 @@ public class WordGenerator {
 
             print(workingArray);
             System.out.println("Finish");
+
         } else {
-            System.out.println("Invalid input");
+            throw new InvalidInputException("The input should include numbers from 0 to 9");
         }
-
-
     }
 
     private void print(ArrayList<String[]> workingArray) {
 
         // array for indexes
-        int n = workingArray.size();
-        int[] indexes = new int[n];
+        int indexArraySize = workingArray.size();
+        int[] indexes = new int[indexArraySize];
 
         // initializing indexes
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < indexArraySize; i++) {
             indexes[i] = 0;
         }
 
         while (true) {
 
             // printing current combinations
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < indexArraySize; i++) {
                 System.out.print(workingArray.get(i)[indexes[i]]);
             }
-
-//            for (int i = n - 1; i >= 0; i--) {
-//                System.out.print(workingArray.get(i)[indexes[i]]);
-//            }
             System.out.println();
 
             // find array which has the most elements after current element
-            int next = n - 1;
+            int next = indexArraySize - 1;
             while (next >= 0 && (indexes[next] + 1 >= workingArray.get(next).length)) {
                 next--;
             }
@@ -71,8 +66,8 @@ public class WordGenerator {
             // if found move to next element of that array
             indexes[next]++;
 
-            // index to fisrt element
-            for (int i = next + 1; i < n; i++) {
+            // index to first element
+            for (int i = next + 1; i < indexArraySize; i++) {
                 indexes[i] = 0;
             }
         }
